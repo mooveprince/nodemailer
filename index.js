@@ -1,7 +1,12 @@
 var nodemailer = require('nodemailer');
 var smtpPool = require('nodemailer-smtp-pool');
 var express = require('express');
+var mustache = require ('mustache');
+var fs = require('fs');
 var app     = express();
+
+  // specify jade template to load
+ var template = process.cwd() + '/mail.html';
 
 app.get('/sendmail', function(req, res){
     // create reusable transporter object using SMTP transport
@@ -18,13 +23,18 @@ app.get('/sendmail', function(req, res){
     // NB! No need to recreate the transporter object. You can use
     // the same transporter object for all e-mails
 
+fs.readFile(template, 'utf8', function (err, file) {
+    if (err) {
+        
+    } else {
+        var html = mustache.to_html(file, {title: 'Express'});
     // setup e-mail data with unicode symbols
     var mailOptions = {
         from: 'Xoomer Admin <ratecheckxoomer@gmail.com>', // sender address
-        bcc: 'mooveprince@gmail.com, mooveprince2@gmail.com', // list of receivers
+        bcc: 'mooveprince@gmail.com',
         subject: 'Rate Changed', // Subject line
         text: 'Hello world ✔', // plaintext body
-        html: '<b>Hello world ✔</b>' // html body
+        html: html // html body
     };
 
     // send mail with defined transport object
@@ -35,7 +45,11 @@ app.get('/sendmail', function(req, res){
         }else{
             console.log('Message sent: ' + info.response);
         }
-    });    
+    });         
+    }
+});
+            
+   
     
     res.send('Check your console!')    
 });

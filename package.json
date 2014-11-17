@@ -1,11 +1,12 @@
 {
-  "name"         : "mail-sender",
-  "version"      : "0.0.1",
-  "description"  : "mail to  user",
-  "main"         : "index.js",
-  "dependencies" : {
-    "nodemailer"    : "*",
-    "nodemailer-smtp-pool" : "*",
-    "express" : "*"  
+  "name": "mail-sender",
+  "version": "0.0.1",
+  "description": "mail to  user",
+  "main": "index.js",
+  "dependencies": {
+    "nodemailer": "*",
+    "nodemailer-smtp-pool": "*",
+    "express": "*",
+    "mustache": "~0.8.2"
   }
 }
