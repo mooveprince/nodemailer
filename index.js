@@ -27,7 +27,7 @@ fs.readFile(template, 'utf8', function (err, file) {
     if (err) {
         
     } else {
-        var html = mustache.to_html(file, {title: 'Express'});
+        var html = mustache.to_html(file, {oldValue: '60.05', newValue: '61.00'});
     // setup e-mail data with unicode symbols
     var mailOptions = {
         from: 'Xoomer Admin <ratecheckxoomer@gmail.com>', // sender address
