@@ -6,7 +6,8 @@ var fs = require('fs');
 var app     = express();
 
   // specify jade template to load
- var template = process.cwd() + '/mail.html';
+// var template = process.cwd() + '/subscribed.html';
+var template = process.cwd() + '/rateChangeMail.html';
 
 app.get('/sendmail', function(req, res){
     // create reusable transporter object using SMTP transport
